@@ -13,3 +13,12 @@ const chalk = require("chalk");
 // Show list of Sheets
 
 
+//User input 
+//Variables to gather user input
+var argv = process.argv;
+let command = argv[3];
+let paramC = argv[4];
+
+// console.log(argv);
+// console.log(command);
+
