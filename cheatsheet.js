@@ -15,11 +15,11 @@ const chalk = require("chalk");
 
 //User input 
 //Variables to gather user input
-var argv = process.argv;
+let argv = process.argv;
 let command = argv[3];
 let paramC = argv[4];
 
-// console.log(argv);
+console.log(process.argv);
 // console.log(command);
 //Test to make sure the inputs work
 
