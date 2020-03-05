@@ -59,7 +59,13 @@ switch (command) {
 //Switch case CRUD Functions 
 
 function createSheet(param) {
-    fs.writeFile(`./cheatsheets/${param}.txt`, `## ${param} ##`, function (err, data)
+    fs.writeFile(`./cheatsheets/${param}.txt`, `## ${param} ##`, (err, data) => {
+        if(err){
+            console.log(err)
+        } else {
+            console.log(`New file for ${param} created successfully!`)
+        }
+    })
 }
 
 function readSheet(param) {}
