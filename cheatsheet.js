@@ -25,6 +25,10 @@ console.log(process.argv);
 
 //Switch statement to route CRUD
 
+//HERE IS HOW TO WRITE IN THE COMMAND
+// node cheatsheet.js command -'c,r,a,d' file name
+//If you are adding something into 
+
 switch (command) {
     case 'create': 
     case '-c':
