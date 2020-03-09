@@ -52,7 +52,7 @@ switch (command) {
         showSheets()    
     break;
     default:
-    console.log('Unrecognized Command');
+    console.log('Unrecognized Command, please input the command - node cheatsheet.js command -c,r,a,d fileName');
 }
 
 
