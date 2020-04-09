@@ -29,29 +29,29 @@ let paramC = argv[4];
 //IF YOU ARE ADDING NOTES INTO A SHEET, TYPE IN THE FOLLOWING COMMAND: node index.js command -'c,r,a,d' file name "Type in Notes here"
 
 switch (command) {
-    case 'create': 
+    case 'create':
     case '-c':
         console.log(`Executing ${command}`)
         createSheet(paramC)
-    break;
-    case 'read': 
+        break;
+    case 'read':
     case '-r':
         console.log(`Executing ${command}`)
         readSheet(paramC)
-    break;
-    case 'add': 
+        break;
+    case 'add':
     case '-a':
         console.log(`Executing ${command}`)
         addToSheet(paramC, argv[5])
-    break;
-    case 'delete': 
+        break;
+    case 'delete':
     case '-d':
         console.log(`Executing ${command}`)
         deleteSheet(argv[5])
-        showSheets()    
-    break;
+        showSheets()
+        break;
     default:
-    console.log('Unrecognized Command, please input the command: node index.js command -c,-r,-a,-d fileName');
+        console.log('Unrecognized Command, please input the command: node index.js command -c,-r,-a,-d fileName');
 }
 
 
@@ -63,7 +63,7 @@ switch (command) {
 
 function createSheet(param) {
     fs.writeFile(`./cheatsheets/${param}.txt`, `## ${param} ##`, (err, data) => {
-        if(err){
+        if (err) {
             console.log(err)
         } else {
             console.log(`New file for ${param} created successfully!`)
@@ -71,13 +71,36 @@ function createSheet(param) {
     })
 }
 
-function readSheet(param) {}
+function readSheet(param) {
+    fs.readFile(`./cheatSheets/${param}.txt`, 'utf-8', (err, data) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log(data)
+        }
+    })
+}
 
-function addToSheet(fileName, payload) {}
+function addToSheet(fileName, payload) {
+    fs.appendFile(`./cheatSheets/${fileName}.txt`, `\n ${payload} \n`, (err, data) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log(`Added ${payload} to cheatsheet`)
+        }
+    })
+}
 
-function showSheets() {}
+function showSheets() {
+    fs.readdir('./cheatSheets', function (err, itmes) {
+        for (var i = 0; i < itmes.length; i++) {
+            console.log(`\n ${items[i].split('.')[0]}`);
+            console.log('----------')
+        }
+    })
+}
 
-function deleteSheet(fileName) {}
+function deleteSheet(fileName) { }
 
 
 
