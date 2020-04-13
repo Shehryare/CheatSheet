@@ -50,6 +50,11 @@ switch (command) {
         deleteSheet(argv[5])
         showSheets()
         break;
+    case 'show':
+    case '-s':
+        console.log(`Executing ${command}`)
+        showSheets()
+        break;
     default:
         console.log('Unrecognized Command, please input the command: node index.js command -c,-r,-a,-d fileName');
 }
@@ -92,12 +97,13 @@ function addToSheet(fileName, payload) {
 }
 
 function showSheets() {
-    fs.readdir('./cheatSheets', function (err, itmes) {
-        for (var i = 0; i < itmes.length; i++) {
+    fs.readdir('./cheatSheets', function (err, items) {
+
+        for (var i = 0; i < items.length; i++) {
             console.log(`\n ${items[i].split('.')[0]}`);
-            console.log('-------------')
+            console.log('----------------------------------------')
         }
-    })
+    });
 }
 
 function deleteSheet(fileName) { }
