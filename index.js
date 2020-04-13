@@ -95,7 +95,7 @@ function showSheets() {
     fs.readdir('./cheatSheets', function (err, itmes) {
         for (var i = 0; i < itmes.length; i++) {
             console.log(`\n ${items[i].split('.')[0]}`);
-            console.log('----------')
+            console.log('-------------')
         }
     })
 }
