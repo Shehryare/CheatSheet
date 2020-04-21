@@ -73,8 +73,8 @@ function createSheet(param) {
         } else {
             console.log(`New file for ${param} created successfully!`)
         }
-    })
-}
+    });
+};
 
 function readSheet(param) {
     fs.readFile(`./cheatSheets/${param}.txt`, 'utf-8', (err, data) => {
@@ -83,8 +83,8 @@ function readSheet(param) {
         } else {
             console.log(data)
         }
-    })
-}
+    });
+};
 
 function addToSheet(fileName, payload) {
     fs.appendFile(`./cheatSheets/${fileName}.txt`, `\n ${payload} \n`, (err, data) => {
@@ -93,8 +93,8 @@ function addToSheet(fileName, payload) {
         } else {
             console.log(`Added ${payload} to cheatsheet`)
         }
-    })
-}
+    });
+};
 
 function showSheets() {
     fs.readdir('./cheatSheets', function (err, items) {
@@ -104,9 +104,16 @@ function showSheets() {
             console.log('----------------------------------------')
         }
     });
-}
+};
 
-function deleteSheet(fileName) { }
+function deleteSheet(fileName) {
+    fs.unlink(`./cheatSheets/${fileName}.txt`,(err) => {
+        if(err) {
+            console.log(err)
+        }
+        console.log(`${fileName}.txt has just been deleted`)
+    });
+};
 
 
 
