@@ -7,3 +7,5 @@
  Ctrl + a -this will bring your cursor to the beginning of the command line 
 
  cd -change directory 
+
+ pwd -prints working directory 
