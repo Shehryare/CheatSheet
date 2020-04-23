@@ -1,6 +1,7 @@
 const fs = require("fs");
 const table = require("table");
 const chalk = require("chalk");
+const colors = require("colors");
 
 //Create file system with fs 
 //install table and chalk modules for styling (later)
