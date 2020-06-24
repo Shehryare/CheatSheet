@@ -1,3 +1,4 @@
+#!/usr/bin/env node     //Makes node file global
 const fs = require("fs");
 const table = require("table");
 const chalk = require("chalk");
@@ -19,6 +20,9 @@ const colors = require("colors");
 let argv = process.argv;
 let command = argv[3];
 let paramC = argv[4];
+
+
+console.log(chalk.blue('Hello world!'));
 
 //Test to make sure the inputs work
 
