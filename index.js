@@ -4,6 +4,9 @@ const table = require("table");
 const chalk = require("chalk");
 const colors = require("colors");
 
+//Chalk configurations
+const error = chalk.bold.red
+
 //Create file system with fs 
 //install table and chalk modules for styling (later)
 
@@ -20,10 +23,12 @@ const colors = require("colors");
 let argv = process.argv;
 let command = argv[3];
 let paramC = argv[4];
+const log = console.log
 
 
-console.log(chalk.blue('Hello world!'));
-
+log(chalk.keyword('orange')('Yay for orange colored text!'));
+log(chalk.rgb(123, 45, 67).underline('Underlined reddish color'));
+log(chalk.hex('#DEADED').bold('Bold gray!'));
 //Test to make sure the inputs work
 
 //Switch statement to route CRUD
@@ -36,32 +41,38 @@ console.log(chalk.blue('Hello world!'));
 switch (command) {
     case 'create':
     case '-c':
-        console.log(`Executing ${command}`)
+        log(chalk.key`Executing ${command}`)
         createSheet(paramC)
         break;
     case 'read':
     case '-r':
-        console.log(`Executing ${command}`)
+        log(`Executing ${command}`)
         readSheet(paramC)
         break;
     case 'add':
     case '-a':
-        console.log(`Executing ${command}`)
+        log(`Executing ${command}`)
         addToSheet(paramC, argv[5])
         break;
     case 'delete':
     case '-d':
-        console.log(`Executing ${command}`)
+        log(`Executing ${command}`)
         deleteSheet(argv[5])
         showSheets()
         break;
     case 'show':
     case '-s':
-        console.log(`Executing ${command}`)
+        log(`Executing ${command}`)
         showSheets()
         break;
     default:
-        console.log('Unrecognized Command, please input the command: node index.js command -c,-r,-a,-d fileName');
+        log(error('Unrecognized Command, ')
+            + 'please input the command: node'
+            + chalk.yellowBright(' index.js ')
+            + 'command' + chalk.green(' -c,-r,-a,-d ')
+            + 'fileName');
+
+
 }
 
 
@@ -74,9 +85,9 @@ switch (command) {
 function createSheet(param) {
     fs.writeFile(`./cheatsheets/${param}.txt`, `## ${param} ##`, (err, data) => {
         if (err) {
-            console.log(err)
+            log(err)
         } else {
-            console.log(`New file for ${param} created successfully!`)
+            log(`New file for ${param} created successfully!`)
         }
     });
 };
@@ -84,9 +95,9 @@ function createSheet(param) {
 function readSheet(param) {
     fs.readFile(`./cheatSheets/${param}.txt`, 'utf-8', (err, data) => {
         if (err) {
-            console.log(err)
+            log(err)
         } else {
-            console.log(data)
+            log(data)
         }
     });
 };
@@ -94,9 +105,9 @@ function readSheet(param) {
 function addToSheet(fileName, payload) {
     fs.appendFile(`./cheatSheets/${fileName}.txt`, `\n ${payload} \n`, (err, data) => {
         if (err) {
-            console.log(err)
+            log(err)
         } else {
-            console.log(`Added ${payload} to cheatsheet`)
+            log(`Added ${payload} to cheatsheet`)
         }
     });
 };
@@ -105,18 +116,18 @@ function showSheets() {
     fs.readdir('./cheatSheets', function (err, items) {
 
         for (var i = 0; i < items.length; i++) {
-            console.log(`\n ${items[i].split('.')[0]}`);
-            console.log('----------------------------------------')
+            log(`\n ${items[i].split('.')[0]}`);
+            log('----------------------------------------')
         }
     });
 };
 
 function deleteSheet(fileName) {
-    fs.unlink(`./cheatSheets/${fileName}.txt`,(err) => {
-        if(err) {
-            console.log(err)
+    fs.unlink(`./cheatSheets/${fileName}.txt`, (err) => {
+        if (err) {
+            log(err)
         }
-        console.log(`${fileName}.txt has just been deleted`)
+        log(`${fileName}.txt has just been deleted`)
     });
 };
 
