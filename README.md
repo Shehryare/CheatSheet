@@ -1,5 +1,5 @@
 # CheatSheet
-Welcome to my cheatsheet CLI interface. The purpose of this application is to have a handy cheatsheet that can be accsesd at anytime without opening up any GUI's. 
+Welcome to my cheatsheet CLI interface. The purpose of this application is to have a handy cheatsheet that can be access at anytime without opening up any GUI's. 
 
 ## How it works
  There are 5 following commands that can be entered into the cheatsheets. 
